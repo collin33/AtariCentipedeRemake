@@ -18,7 +18,16 @@ namespace AtariCentipedeRemake
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            // TODO: Add your initialization logic here\
+
+            // Set window title
+            Window.Title = "Atari Centipede Remake door Collin Meinders 19GD";
+
+            // Set game resolution
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.ApplyChanges();
+            _graphics.ToggleFullScreen();
 
             base.Initialize();
         }
@@ -42,7 +51,8 @@ namespace AtariCentipedeRemake
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            // Set background colour
+            GraphicsDevice.Clear(Color.Black);
 
             // TODO: Add your drawing code here
 
