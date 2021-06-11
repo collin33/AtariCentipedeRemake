@@ -18,20 +18,17 @@ namespace AtariCentipedeRemake
         float playerLaserSpeed = 600f;
         bool playerLaserActive = false;
 
-        // Alien data
+        // Centipede data
         List<GameObject> fullCentipede;
-        GameObject alien;
-        GameObject alienHead;
-        int numberOfAliens = 20;
-        int numberOfAliensInHorizontalRow = 20;
-        int alienLeftMargin = 30;
-        int alienTopMargin = 64;
-        int alienSpacing = 32;
-        //bool alienHorizontalDirection = true;
-        double timeAlienLastHorizontalMove = 0;
-        //int alienVerticalStepInterval = 5000;
-        double timeAlienLastVerticalMove = 0;
-        int alienHorizontalStepInterval = 125;
+        GameObject centipede;
+        GameObject centipedeHead;
+        int centipedeLenght = 20;
+        int centipedeLenghtInHorizontalRow = 20;
+        int centipedeLeftMargin = 30;
+        int centipedeTopMargin = 64;
+        int centipedeSpacing = 32;
+        double timeCentipedeLastHorizontalMove = 0;
+        int centipedeHorizontalStepInterval = 125;
 
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
@@ -58,8 +55,8 @@ namespace AtariCentipedeRemake
             playerPosition = new Vector2(_graphics.PreferredBackBufferWidth / 2, _graphics.PreferredBackBufferHeight - 32);
             playerSpeed = 500f;
             fullCentipede = new List<GameObject>();
-            alien = new GameObject();
-            alienHead = new GameObject();
+            centipede = new GameObject();
+            centipedeHead = new GameObject();
 
             base.Initialize();
         }
@@ -71,28 +68,27 @@ namespace AtariCentipedeRemake
             // TODO: use this.Content to load your game content here
             playerTexture = Content.Load<Texture2D>("Centipede_player_placeholder");
             playerLaser = Content.Load<Texture2D>("laser1");
-            alien.AddTexture(this.Content.Load<Texture2D>("Centipede_tail_placeholder"));
-            alienHead.AddTexture(this.Content.Load<Texture2D>("Centipede_head_placeholder")); 
+            centipede.AddTexture(this.Content.Load<Texture2D>("Centipede_tail_placeholder"));
+            centipedeHead.AddTexture(this.Content.Load<Texture2D>("Centipede_head_placeholder")); 
 
-            for (int i = 0; i < numberOfAliens; i++)
+            for (int i = 0; i < centipedeLenght; i++)
             {
-                // TODO: Place aliens in a matix grid.
-                int divider = numberOfAliens / numberOfAliensInHorizontalRow;
-                int x = alienLeftMargin + (i / divider) * alienSpacing;
-                int y = alienTopMargin + (i % divider) * alienSpacing;
+                int divider = centipedeLenght / centipedeLenghtInHorizontalRow;
+                int x = centipedeLeftMargin + (i / divider) * centipedeSpacing;
+                int y = centipedeTopMargin + (i % divider) * centipedeSpacing;
                 if (i == 0)
                 {
-                    var nextAlien = new GameObject(alienHead);
-                    nextAlien.position.X = x;
-                    nextAlien.position.Y = y;
-                    fullCentipede.Add(nextAlien);
+                    var nextCentipedeBodyPart = new GameObject(centipedeHead);
+                    nextCentipedeBodyPart.position.X = x;
+                    nextCentipedeBodyPart.position.Y = y;
+                    fullCentipede.Add(nextCentipedeBodyPart);
                 }
                 else
                 {
-                    var nextAlien = new GameObject(alien);
-                    nextAlien.position.X = x;
-                    nextAlien.position.Y = y;
-                    fullCentipede.Add(nextAlien);
+                    var nextCentipedeBodyPart = new GameObject(centipede);
+                    nextCentipedeBodyPart.position.X = x;
+                    nextCentipedeBodyPart.position.Y = y;
+                    fullCentipede.Add(nextCentipedeBodyPart);
                 }
             }
         }
@@ -151,51 +147,40 @@ namespace AtariCentipedeRemake
                 }
             }
 
-            // alien movement script
+            // centipede movement script
             var now = gameTime.TotalGameTime.TotalMilliseconds;
-            if (alien.position.X > 500)
-            {
-                foreach (GameObject alien in fullCentipede)
-                {
-                    
-                }
-                alien.horizontalDirection = !alien.horizontalDirection;
-                timeAlienLastVerticalMove = now;
-            }
 
-            if (now - timeAlienLastHorizontalMove > alienHorizontalStepInterval)
+            if (now - timeCentipedeLastHorizontalMove > centipedeHorizontalStepInterval)
             {
-                foreach (GameObject alien in fullCentipede)
+                foreach (GameObject centipede in fullCentipede)
                 {
-                    if (alien.horizontalDirection == true) // TODO: Refactor magic number.
+                    if (centipede.horizontalDirection == true) // TODO: Refactor magic number.
                     { 
-                        if (alien.position.X > _graphics.PreferredBackBufferWidth - playerTexture.Width * 2)
-                        { 
-                            alien.position.Y += alien.speed;
-                            alien.horizontalDirection = !alien.horizontalDirection;
+                        if (centipede.position.X > _graphics.PreferredBackBufferWidth - playerTexture.Width * 2)
+                        {
+                            centipede.position.Y += centipede.speed;
+                            centipede.horizontalDirection = !centipede.horizontalDirection;
                         }
                         else
                         {
-                            alien.position.X += alien.speed;
+                            centipede.position.X += centipede.speed;
                         }
 
                     }
                     else
                     {
-                        if (alien.position.X < playerTexture.Width / 2)
+                        if (centipede.position.X < playerTexture.Width / 2)
                         {
-                            alien.position.Y += alien.speed;
-                            alien.horizontalDirection = !alien.horizontalDirection;
+                            centipede.position.Y += centipede.speed;
+                            centipede.horizontalDirection = !centipede.horizontalDirection;
                         }
                         else
                         {
-                            alien.position.X -= alien.speed;
+                            centipede.position.X -= centipede.speed;
                         }
                     }
                 }
-                //alienHorizontalMoveCount++;
-                //alienHorizontalMoveCount %= 10; // TODO: Refactor magic number.
-                timeAlienLastHorizontalMove = now;
+                timeCentipedeLastHorizontalMove = now;
             }     
             base.Update(gameTime);
         }
@@ -213,9 +198,9 @@ namespace AtariCentipedeRemake
                 _spriteBatch.Draw(playerLaser, playerLaserPosition, Color.White);
             }
 
-            foreach (GameObject alien in fullCentipede)
+            foreach (GameObject centipede in fullCentipede)
             {
-                alien.Draw(_spriteBatch);
+                centipede.Draw(_spriteBatch);
             }
 
             _spriteBatch.End();
