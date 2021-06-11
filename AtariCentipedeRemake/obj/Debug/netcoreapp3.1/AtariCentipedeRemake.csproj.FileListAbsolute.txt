@@ -36,3 +36,4 @@ C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\obj\Debug\
 C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\obj\Debug\netcoreapp3.1\AtariCentipedeRemake.genruntimeconfig.cache
 C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\Centipede_player_placeholder.xnb
 C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\laser1.xnb
+C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\Centipede_head_placeholder.xnb
