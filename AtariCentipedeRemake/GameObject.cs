@@ -13,14 +13,16 @@ namespace AtariCentipedeRemake
         public bool active;
         public float width;
         public float height;
+        public bool horizontalDirection;
 
         public GameObject()
         {
             position = Vector2.Zero;
-            speed = 10;
+            speed = 32;
             active = true;
             width = 0.0F;
             height = 0.0F;
+            horizontalDirection = true;
         }
 
         public GameObject(GameObject org)
