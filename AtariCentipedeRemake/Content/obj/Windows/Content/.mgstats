@@ -1,2 +1,3 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/Centipede_player_placeholder.png","C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/bin/Windows/Content/Centipede_player_placeholder.xnb","TextureProcessor","Texture2DContent",258,4181,0.1885732
+"C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/laser1.png","C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/bin/Windows/Content/laser1.xnb","TextureProcessor","Texture2DContent",3574,1697,0.2097721

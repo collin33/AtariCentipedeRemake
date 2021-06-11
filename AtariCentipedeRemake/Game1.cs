@@ -9,6 +9,12 @@ namespace AtariCentipedeRemake
         Texture2D playerTexture;
         Vector2 playerPosition;
         float playerSpeed;
+
+        Texture2D playerLaser;
+        Vector2 playerLaserPosition = Vector2.Zero;
+        float playerLaserSpeed = 600f;
+        bool playerLaserActive = false;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -43,6 +49,7 @@ namespace AtariCentipedeRemake
 
             // TODO: use this.Content to load your game content here
             playerTexture = Content.Load<Texture2D>("Centipede_player_placeholder");
+            playerLaser = Content.Load<Texture2D>("laser1");
         }
 
         protected override void Update(GameTime gameTime)
@@ -53,17 +60,39 @@ namespace AtariCentipedeRemake
             // TODO: Add your update logic here
             var kstate = Keyboard.GetState();
 
+            // up
             if (kstate.IsKeyDown(Keys.Up))
                 playerPosition.Y -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            // down
             if (kstate.IsKeyDown(Keys.Down))
                 playerPosition.Y += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
-
+            
+            // left
             if (kstate.IsKeyDown(Keys.Left))
                 playerPosition.X -= playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
 
+            // right
             if (kstate.IsKeyDown(Keys.Right))
                 playerPosition.X += playerSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+
+            // space - laser command
+            if (!playerLaserActive & kstate.IsKeyDown(Keys.Space))
+            {
+                playerLaserActive = true;
+                playerLaserPosition.X = playerPosition.X - playerLaser.Width /2;
+                playerLaserPosition.Y = playerPosition.Y - playerLaser.Height;
+            }
+
+            // activated laser
+            if (playerLaserActive)
+            {
+                playerLaserPosition.Y -= playerLaserSpeed * (float)gameTime.ElapsedGameTime.TotalSeconds;
+                if (playerLaserPosition.Y < playerLaser.Height)
+                {
+                    playerLaserActive = false;
+                }
+            }
 
             if (playerPosition.X > _graphics.PreferredBackBufferWidth - playerTexture.Width / 2)
                 playerPosition.X = _graphics.PreferredBackBufferWidth - playerTexture.Width / 2;
@@ -87,6 +116,10 @@ namespace AtariCentipedeRemake
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
             _spriteBatch.Draw(playerTexture, playerPosition, null, Color.White, 0f, new Vector2(playerTexture.Width / 2, playerTexture.Height / 2), Vector2.One, SpriteEffects.None, 0f);
+            if (playerLaserActive)
+            {
+                _spriteBatch.Draw(playerLaser, playerLaserPosition, Color.White);
+            }
             _spriteBatch.End();
 
             base.Draw(gameTime);

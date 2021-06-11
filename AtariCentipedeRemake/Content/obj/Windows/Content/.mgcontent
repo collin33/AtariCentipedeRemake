@@ -5,8 +5,10 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/Centipede_player_placeholder.png</File>
+    <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/laser1.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
   </DestFiles>
 </SourceFileCollection>
