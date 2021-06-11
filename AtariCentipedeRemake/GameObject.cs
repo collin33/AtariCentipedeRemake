@@ -14,6 +14,8 @@ namespace AtariCentipedeRemake
         public float width;
         public float height;
         public bool horizontalDirection;
+        public bool centiHead;
+        public int animCount;
 
         public GameObject()
         {

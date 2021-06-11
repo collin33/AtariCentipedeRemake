@@ -38,3 +38,8 @@ C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\
 C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\laser1.xnb
 C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\Centipede_head_placeholder.xnb
 C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\Centipede_tail_placeholder.xnb
+C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\CentipedeBodyA.xnb
+C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\CentipedeBodyB.xnb
+C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\CentipedeBodyC.xnb
+C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\CentipedeHead.xnb
+C:\Users\colac\source\repos\AtariCentipedeRemake\AtariCentipedeRemake\bin\Debug\netcoreapp3.1\Content\Player.xnb

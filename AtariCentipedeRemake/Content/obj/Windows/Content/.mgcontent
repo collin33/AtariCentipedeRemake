@@ -7,9 +7,19 @@
     <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/Centipede_head_placeholder.png</File>
     <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/Centipede_player_placeholder.png</File>
     <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/Centipede_tail_placeholder.png</File>
+    <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/CentipedeBodyA.png</File>
+    <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/CentipedeBodyB.png</File>
+    <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/CentipedeBodyC.png</File>
+    <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/CentipedeHead.png</File>
     <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/laser1.png</File>
+    <File>C:/Users/colac/source/repos/AtariCentipedeRemake/AtariCentipedeRemake/Content/Player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

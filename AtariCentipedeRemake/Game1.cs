@@ -30,8 +30,11 @@ namespace AtariCentipedeRemake
         double timeCentipedeLastHorizontalMove = 0;
         int centipedeHorizontalStepInterval = 125;
 
+        int aniX;
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
+
 
         public Game1()
         {
@@ -57,6 +60,7 @@ namespace AtariCentipedeRemake
             fullCentipede = new List<GameObject>();
             centipede = new GameObject();
             centipedeHead = new GameObject();
+            aniX = 0;
 
             base.Initialize();
         }
@@ -66,10 +70,10 @@ namespace AtariCentipedeRemake
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
-            playerTexture = Content.Load<Texture2D>("Centipede_player_placeholder");
+            playerTexture = Content.Load<Texture2D>("Player");
             playerLaser = Content.Load<Texture2D>("laser1");
-            centipede.AddTexture(this.Content.Load<Texture2D>("Centipede_tail_placeholder"));
-            centipedeHead.AddTexture(this.Content.Load<Texture2D>("Centipede_head_placeholder")); 
+            centipede.AddTexture(this.Content.Load<Texture2D>("CentipedeBodyA"));
+            centipedeHead.AddTexture(this.Content.Load<Texture2D>("CentipedeHead")); 
 
             for (int i = 0; i < centipedeLenght; i++)
             {
@@ -81,6 +85,7 @@ namespace AtariCentipedeRemake
                     var nextCentipedeBodyPart = new GameObject(centipedeHead);
                     nextCentipedeBodyPart.position.X = x;
                     nextCentipedeBodyPart.position.Y = y;
+                    nextCentipedeBodyPart.centiHead = true;
                     fullCentipede.Add(nextCentipedeBodyPart);
                 }
                 else
@@ -88,7 +93,17 @@ namespace AtariCentipedeRemake
                     var nextCentipedeBodyPart = new GameObject(centipede);
                     nextCentipedeBodyPart.position.X = x;
                     nextCentipedeBodyPart.position.Y = y;
+                    nextCentipedeBodyPart.centiHead = false;
+                    nextCentipedeBodyPart.animCount = aniX;
                     fullCentipede.Add(nextCentipedeBodyPart);
+                }
+                if (aniX == 0)
+                {
+                    aniX = 2;
+                }
+                else
+                {
+                    aniX = aniX - 1;
                 }
             }
         }
@@ -164,10 +179,26 @@ namespace AtariCentipedeRemake
                         else
                         {
                             centipede.position.X += centipede.speed;
+                            if (centipede.centiHead == false)
+                            {
+                                if (centipede.animCount == 0)
+                                {
+                                    centipede.AddTexture(this.Content.Load<Texture2D>("CentipedeBodyA"));
+                                }
+                                else if (centipede.animCount == 1)
+                                {
+                                    centipede.AddTexture(this.Content.Load<Texture2D>("CentipedeBodyB"));
+                                }
+                                else if (centipede.animCount == 2)
+                                {
+                                    centipede.AddTexture(this.Content.Load<Texture2D>("CentipedeBodyC"));
+                                    centipede.animCount = 0;
+                                }
+                            }
                         }
 
                     }
-                    else
+                    else if (centipede.horizontalDirection == false)
                     {
                         if (centipede.position.X < playerTexture.Width / 2)
                         {
@@ -177,6 +208,22 @@ namespace AtariCentipedeRemake
                         else
                         {
                             centipede.position.X -= centipede.speed;
+                            if (centipede.centiHead == false)
+                            {
+                                if (centipede.animCount == 0)
+                                {
+                                    centipede.AddTexture(this.Content.Load<Texture2D>("CentipedeBodyC"));
+                                }
+                                else if (centipede.animCount == 1)
+                                {
+                                    centipede.AddTexture(this.Content.Load<Texture2D>("CentipedeBodyB"));
+                                }
+                                else if (centipede.animCount == 2)
+                                {
+                                    centipede.AddTexture(this.Content.Load<Texture2D>("CentipedeBodyA"));
+                                    centipede.animCount = 0;
+                                }
+                            }
                         }
                     }
                 }
